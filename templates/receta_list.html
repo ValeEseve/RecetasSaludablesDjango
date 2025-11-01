@@ -9,8 +9,8 @@
 <body>
     {% extends 'base.html' %}
     {% block content %}
-    <div class="container py-5">
-        <h1 class="text-body-emphasis text-center">Recetas Ricas y Saludables</h1>
+    <div class="container py-5 p-auto mb-4">
+        <h1 class="text-body-emphasis text-center text-white">Recetas Ricas y Saludables</h1>
         <p class="col-lg-8 mx-auto lead text-center">
             Descubre nuestras deliciosas recetas diseñadas para cuidar de tu salud sin sacrificar el sabor.
         </p>
@@ -19,13 +19,13 @@
     {% load static %}
     <div class="row justify-content-center">
         {% for receta in recetas %}
-        <div class="col-md-4 d-flex justify-content-center mb-4">
+        <div class="col-md-3 col-xl-2 d-flex justify-content-center mb-4 h-100">
             <div class="card" style="width: 18rem;">
                 <img src="{{ receta.imagen.url }}" class="card-img-top" alt="Imagen de {{ receta.nombre }}">
                 <div class="card-body">
                     <h5 class="card-title">{{receta.nombre}}</h5>
                     <p class="card-text">{{ receta.descripcion}}</p>
-                    <a href="#" class="btn btn-secondary">Ver receta</a>
+                    <a href="{% url 'detalle_receta' receta.id %}" class="btn btn-secondary">Ver receta</a>
                 </div>
             </div>
         </div>
