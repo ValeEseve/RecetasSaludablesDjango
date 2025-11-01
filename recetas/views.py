@@ -16,3 +16,6 @@ def detalle_receta(request, id):
     ingredientes_lista = [i.strip() for i in receta.ingredientes.split('•')]
     receta.ingredientes_lista = ingredientes_lista
     return render(request, 'detalle_receta.html', {'receta': receta})
+
+def contacto(request):
+    return render(request, 'contacto.html')
