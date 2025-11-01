@@ -2,84 +2,36 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../media/favicon.png" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
     <title>Recetas</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Recetas Ricas y Saludables</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Recetas</a>
-                        <a class="nav-link" href="#">Contacto</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    {% extends 'base.html' %}
+    {% block content %}
     <div class="container py-5">
-        <h1 class="text-body-emphasis">Recetas Ricas y Saludables <p class="col-lg-8 mx-auto lead">
-                This takes the basic jumbotron above and makes its background edge-to-edge with a
-                <code>.container</code> inside to align content. Similar to above, it's been recreated with built-in
-                grid and utility classes.
-            </p>
+        <h1 class="text-body-emphasis text-center">Recetas Ricas y Saludables</h1>
+        <p class="col-lg-8 mx-auto lead text-center">
+            Descubre nuestras deliciosas recetas diseñadas para cuidar de tu salud sin sacrificar el sabor.
+        </p>
     </div>
-    <ul>
-        {% load static %}
+
+    {% load static %}
+    <div class="row justify-content-center">
         {% for receta in recetas %}
-        <div class="card" style="width: 18rem;">
-            <img src="{{recetas.imagen.url}}" class="card-img-top" alt="Imagen de {{ receta.nombre }}">
-            <div class="card-body">
-                <h5 class="card-title">{{receta.nombre}}</h5>
-                <p class="card-text">{{ receta.descripcion}}</p>
-                <a href="#" class="btn btn-primary">Ver receta</a>
+        <div class="col-md-4 d-flex justify-content-center mb-4">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ receta.imagen.url }}" class="card-img-top" alt="Imagen de {{ receta.nombre }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{receta.nombre}}</h5>
+                    <p class="card-text">{{ receta.descripcion}}</p>
+                    <a href="#" class="btn btn-secondary">Ver receta</a>
+                </div>
             </div>
         </div>
-        <img src="{{receta.imagen.url}}" alt="Imagen de {{ receta.nombre }}" width="200" />
-        <li>
-            <h2>{{ receta.nombre }}</h2>
-            <h3>Ingredientes:</h3>
-            <ul>
-                {% for ingrediente in receta.ingredientes_lista %}
-                <li>{{ ingrediente }}</li>
-                {% endfor %}
-            </ul>
-            <h3>Instrucciones:</h3>
-            <p>{{ receta.instrucciones }}</p>
-        </li>
         {% endfor %}
-
-    </ul>
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p class="col-md-4 mb-0 text-body-secondary">© 2025 Recetas</p> <a href="/"
-            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
-            aria-label="Bootstrap"> <svg class="bi me-2" width="40" height="32" aria-hidden="true">
-                <use xlink:href="#bootstrap"></use>
-            </svg> </a>
-        <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Recetas</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contacto</a></li>
-        </ul>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+    </div>
+    {% endblock %}
 </body>
 
 </html>

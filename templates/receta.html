@@ -1,0 +1,12 @@
+<img src="{{receta.imagen.url}}" alt="Imagen de {{ receta.nombre }}" width="200" />
+        <li>
+            <h2>{{ receta.nombre }}</h2>
+            <h3>Ingredientes:</h3>
+            <ul>
+                {% for ingrediente in receta.ingredientes_lista %}
+                <li>{{ ingrediente }}</li>
+                {% endfor %}
+            </ul>
+            <h3>Instrucciones:</h3>
+            <p>{{ receta.instrucciones }}</p>
+        </li>
